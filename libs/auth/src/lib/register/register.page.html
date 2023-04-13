@@ -1,1 +1,18 @@
-<p>register works!</p>
+<h1>register works!</h1>
+<div class="max-w-xl mx-auto rounded-md drop-shadow-md border p-4">
+    <form [formGroup]="form" (ngSubmit)="submit()" class="flex flex-col gap-4">
+        <label>Name</label>
+        <input type="text" formControlName="name">
+
+        <label>Email</label>
+        <input type="text" formControlName="email">
+
+        <label>Password</label>
+        <input type="text" formControlName="password">
+
+        <button type="submit" [disabled]="form.invalid">Bóton</button>
+    </form>
+    <ng-container *ngIf="store.error$ | async as error">
+        <div>{{error.error}}</div>
+    </ng-container>
+</div>
