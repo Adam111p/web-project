@@ -4,6 +4,11 @@
     <div class="h-3">
         <mat-progress-bar mode="indeterminate" *ngIf="store.loading$ | async"></mat-progress-bar>
     </div>
+    <form (ngSubmit)="store.filters= filtersForm.value" [formGroup]="filtersForm">
+        <input type="text" formControlName="q">
+        <input type="text" formControlName="year">
+        <button type="submit">szukej</button>
+    </form>
     <table mat-table #table [dataSource]="songs" matSort [assecoStore]="store">
 
         <ng-container matColumnDef="id">
